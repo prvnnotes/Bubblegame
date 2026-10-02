@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1,
+                 maximum-scale=1,
+                 user-scalable=no,
+                 viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#101827">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta
+        name="description"
+        content="Bubble Shooter by Praveen Sharma — a polished mobile bubble shooting game inspired by Mithila art."
+    >
+
+    <title>Bubble Shooter by Praveen Sharma</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         GAME APPLICATION
+         ========================================================= -->
+
+    <div id="game">
+
+        <!-- Background decoration -->
+        <div class="mithila-pattern mithila-pattern-top"></div>
+        <div class="mithila-pattern mithila-pattern-bottom"></div>
+
+        <!-- =====================================================
+             TOP HUD
+             ===================================================== -->
+
+        <header id="game-header">
+
+            <div class="hud-side hud-level">
+                <span class="hud-label">LEVEL</span>
+                <span id="level-number">01</span>
+            </div>
+
+            <div class="game-title">
+                <span class="title-main">BUBBLE SHOOTER</span>
+                <span class="title-sub">BY PRAVEEN SHARMA</span>
+            </div>
+
+            <div class="hud-side hud-score">
+                <span class="hud-label">SCORE</span>
+                <span id="score">00000</span>
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             GAME AREA
+             ===================================================== -->
+
+        <main id="game-area">
+
+            <canvas
+                id="game-canvas"
+                aria-label="Bubble Shooter game area"
+            ></canvas>
+
+            <!-- Subtle danger indicator -->
+            <div id="danger-line"></div>
+
+        </main>
+
+
+        <!-- =====================================================
+             LAUNCHER AREA
+             ===================================================== -->
+
+        <section id="launcher-area">
+
+            <div id="launcher-zone">
+
+                <!-- Next bubble -->
+                <div id="next-bubble-container">
+                    <span class="small-label">NEXT</span>
+
+                    <div
+                        id="next-bubble"
+                        class="bubble-preview"
+                        aria-label="Next bubble"
+                    ></div>
+                </div>
+
+
+                <!-- Cannon -->
+                <div id="cannon-container">
+
+                    <div id="cannon">
+                        <div id="cannon-barrel"></div>
+                        <div id="cannon-body"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- Current bubble -->
+                <div
+                    id="current-bubble"
+                    class="bubble-preview"
+                    aria-label="Current bubble"
+                ></div>
+
+            </div>
+
+            <!-- Failed shot indicator -->
+            <div id="miss-indicator">
+
+                <span class="miss-label">MISSES</span>
+
+                <div class="miss-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             GAME CONTROLS
+             ===================================================== -->
+
+        <nav id="game-controls">
+
+            <button
+                id="sound-button"
+                class="control-button"
+                type="button"
+                aria-label="Toggle sound"
+            >
+                🔊
+            </button>
+
+            <button
+                id="pause-button"
+                class="control-button"
+                type="button"
+                aria-label="Pause game"
+            >
+                II
+            </button>
+
+        </nav>
+
+
+        <!-- =====================================================
+             LEVEL COMPLETE
+             ===================================================== -->
+
+        <div
+            id="level-complete"
+            class="game-overlay"
+            hidden
+        >
+
+            <div class="overlay-card">
+
+                <div class="celebration-icon">✦</div>
+
+                <p class="overlay-kicker">LEVEL COMPLETE</p>
+
+                <h1>बहुत बढ़िया!</h1>
+
+                <div class="final-score">
+                    <span>SCORE</span>
+                    <strong id="final-score">00000</strong>
+                </div>
+
+                <button
+                    id="next-level-button"
+                    class="primary-button"
+                    type="button"
+                >
+                    NEXT LEVEL
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             LEVEL FAILED
+             ===================================================== -->
+
+        <div
+            id="level-failed"
+            class="game-overlay"
+            hidden
+        >
+
+            <div class="overlay-card">
+
+                <div class="failure-icon">↻</div>
+
+                <p class="overlay-kicker">LEVEL FAILED</p>
+
+                <h1>फेर सँ प्रयास करू</h1>
+
+                <div class="final-score">
+                    <span>SCORE</span>
+                    <strong id="failed-score">00000</strong>
+                </div>
+
+                <button
+                    id="retry-button"
+                    class="primary-button"
+                    type="button"
+                >
+                    TRY AGAIN
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             PAUSE MENU
+             ===================================================== -->
+
+        <div
+            id="pause-menu"
+            class="game-overlay"
+            hidden
+        >
+
+            <div class="overlay-card">
+
+                <p class="overlay-kicker">GAME PAUSED</p>
+
+                <h1>विराम</h1>
+
+                <button
+                    id="resume-button"
+                    class="primary-button"
+                    type="button"
+                >
+                    RESUME
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         GAME SCRIPT
+         ========================================================= -->
+
+    <script src="game.js"></script>
+
+</body>
+</html>
